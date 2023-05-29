@@ -28,15 +28,15 @@ h1 {
 }
 
 .movieBox {
+  /* 정렬안됨, 수정필요*/
   margin-top: 50px;
-  width: 30%;
-  max-width: 1200px;
+  width: 300px;
   height: 500px;
 
-  display: inline;
-  /* flex-wrap: wrap;
-  justify-content: space-between;
-  flex-direction: row; */
+  display: grid;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  flex-direction: row;
 }
 
 .myTitle {

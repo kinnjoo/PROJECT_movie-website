@@ -10,24 +10,29 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
     .then(response => response.json())
     .then(data => {
         // 영화 목록 확인
-        console.log(data['results']);
+        // console.log(data['results']);
         let movieList = data['results'];
 
-        movieList.forEach((Movie) => {
+        movieList.forEach(Movie => {
             let poster_path = Movie['poster_path'];
             let title = Movie['title'];
             let overview = Movie['overview'];
             let vote_average = Movie['vote_average'];
+            let id = Movie['id'];
 
             const movieElement = document.createElement("movieBox");
             movieElement.innerHTML = `
-                <img src="https://image.tmdb.org/t/p/w500/${poster_path}">
-                <p>${title}</p>
-                <p>${overview}</p>
-                <p>${vote_average}</p>
+                <div onclick="movieId(${id})">
+                    <img src="https://image.tmdb.org/t/p/w500/${poster_path}">
+                    <p>${title}</p>
+                    <p>${overview}</p>
+                    <p>${vote_average}</p>
+                </div>
             `;
 
             movieBox.appendChild(movieElement);
-        })
+        });
     })
     .catch(err => console.error(err));
+
+const movieId = id => alert(`영화 id : ${id}`);
