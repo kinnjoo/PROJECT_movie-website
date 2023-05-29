@@ -8,28 +8,26 @@ const options = {
 
 fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
     .then(response => response.json())
-    .then((data) => {
-        // 영화 목록
-        let movieList = data['results']
+    .then(data => {
+        // 영화 목록 확인
+        console.log(data['results']);
+        let movieList = data['results'];
 
-        movieList.forEach((a) => {
-            let poster_path = a['poster_path']
-            let title = a['title']
-            let overview = a['overview']
-            let vote_average = a['vote_average']
-            let id = a['id']
-            const movieBox = document.getElementById("movieBox");
-            // console.dir(movieBox.innerHTML);
+        movieList.forEach((Movie) => {
+            let poster_path = Movie['poster_path'];
+            let title = Movie['title'];
+            let overview = Movie['overview'];
+            let vote_average = Movie['vote_average'];
 
-            document.getElementById("movieBox").innerHTML =
-                `<div class="movieBox">
-                    <img src="https://image.tmdb.org/t/p/w500/${poster_path}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">${title}</h5>
-                        <p class="card-text">${overview}</p>
-                        <p>${vote_average}</p>
-                    </div>
-                </div>`
+            const movieElement = document.createElement("movieBox");
+            movieElement.innerHTML = `
+                <img src="https://image.tmdb.org/t/p/w500/${poster_path}">
+                <p>${title}</p>
+                <p>${overview}</p>
+                <p>${vote_average}</p>
+            `;
+
+            movieBox.appendChild(movieElement);
         })
     })
     .catch(err => console.error(err));

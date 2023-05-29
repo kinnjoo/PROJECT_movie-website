@@ -12,21 +12,18 @@
 
 <body>
     <header>
-        <h1>내배캠 최고 평점 영화 콜렉션</h1>
+        <div class="myTitle">
+            <h1>내배캠 최고 평점 영화 콜렉션</h1>
+        </div>
     </header>
     <!-- onclick했을 때 영화 id값 alert으로 뜨게 하기(+onclick="") -->
     <form class="search" onsubmit="handleSearch(event)">
-        <label>영화 검색 : </label>
-        <input type="text" id="search-input" placeholder="영화 제목을 검색해 보세요" />
+        <h4>영화 검색 </h4>
+        <input type="text" id="search-input" placeholder="영화 제목을 검색해 보세요"
+            style="width:250px;height:25px;font-size:15px;" />
         <button type="submit" id="search-btn">검색</button>
     </form>
     <div class="movieBox" id="movieBox">
-        <img src="https://image.tmdb.org/t/p/w500" class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title">영화 제목</h5>
-            <p class="card-text">내용 요약</p>
-            <p>평점</p>
-        </div>
     </div>
     <script src="main.js"></script>
 </body>
