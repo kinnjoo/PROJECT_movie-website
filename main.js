@@ -31,10 +31,12 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
                     const movieElement = document.createElement("div");
                     movieElement.className = "movieCard";
                     movieElement.innerHTML = `
-                        <img src="https://image.tmdb.org/t/p/w300/${poster_path}" onclick="movieId(${id})">
-                        <p>${title}</p>
-                        <p>${overview}</p>
-                        <p>${vote_average}</p>
+                        <div onclick="movieId(${id})">
+                            <img src="https://image.tmdb.org/t/p/w300/${poster_path}">
+                            <p>${title}</p>
+                            <p>${overview}</p>
+                            <p>Rating : ${vote_average}</p>
+                        </div>
                     `;
                     list.appendChild(movieElement);
                 }
