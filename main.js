@@ -9,14 +9,14 @@ const options = {
 fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
     .then(response => response.json())
     .then(data => {
-        // 영화 목록
+        // 전체 영화 목록
         let movieList = data['results'];
 
         const list = document.getElementById('movieBox');
 
         // 영화 목록을 표시
         function showList(val = '') {
-            // movieBox 내용 지우고 forEach문으로 movieList 데이터입력
+            // movieList에 데이터 입력
             list.innerHTML = "";
 
             movieList.forEach(movie => {
@@ -26,7 +26,8 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
                 let vote_average = movie['vote_average'];
                 let id = movie['id'];
 
-                // 검색하면(검색 값이 있을경우) list에 추가 -> 검색 결과 출력
+                // 검색하면(검색 값이 있을경우) 해당 title의 영화가 movieCard라는 새로운 div 하위요소에 생성
+                // 대소문자 구별 없이 검색가능
                 if (title.toLowerCase().includes(val.toLowerCase())) {
                     const movieElement = document.createElement("div");
                     movieElement.className = "movieCard";
@@ -45,10 +46,11 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
 
         showList();
 
+        // input박스, 검색버튼 DOM 설정
         const searchInput = document.getElementById("searchInput");
         const searchBtn = document.getElementById("searchBtn");
 
-        // 검색 버튼
+        // input박스에 검색어 입력 후 버튼 클릭시 입력 값 showList 실행
         searchBtn.addEventListener("click", (e) => {
             e.preventDefault();
             const val = searchInput.value;
@@ -57,5 +59,5 @@ fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', opti
     })
     .catch(err => console.error(err));
 
-// 영화이미지 클릭시 id값 alert 창으로 띄우기
+// 영화카드 클릭시 id값 alert 창으로 띄우기
 const movieId = id => alert(`영화 id : ${id}`);

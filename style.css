@@ -46,7 +46,7 @@ h1 {
 }
 
 .movieBox > div:hover {
-  background-color: rgb(170, 208, 0);
+  background-color: rgb(161, 171, 113);
 }
 
 .movieBox > div > div {
@@ -64,7 +64,8 @@ h1 {
 
 .movieBox > div > div > p:nth-child(4) {
   font-weight: bold;
-  color: rgb(82, 68, 52);
+  font-size: 20px;
+  color: rgb(223, 115, 0);
 }
 
 /* 상단바 */
